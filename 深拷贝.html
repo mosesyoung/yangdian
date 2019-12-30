@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <div style="width: 200px;height: 200px;background:red"></div>
+  <script>
+    var j=[0,[2,2,3,8],[93,9],81];
+    function deepCopy(obj){
+      if(Object.prototype.toString.call(obj).slice(8,-1)=='Object'){
+        var copyObj ={};
+      }else if(Object.prototype.toString.call(obj).slice(8,-1)=='Array'){
+        var copyObj =[];
+      }else{
+        return obj;
+      }
+      for(var key in obj){
+        if(typeof obj[key]=='object'){
+          deepCopy(obj[key]);
+        }
+        copyObj[key]=obj[key];
+      }
+      return copyObj;
+    }
+    var a=deepCopy(j);
+    console.log(a);
+    j=[0,[2,2],[93,9]]
+    console.log(a);
+  </script>
+</body>
+</html>
